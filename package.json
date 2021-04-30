@@ -1,0 +1,20 @@
+{
+  "name": "test_recrutement",
+  "version": "1.0.0",
+  "description": "Recrutement ",
+  "scripts": {
+    "run_backend_confirmed": "node backend_confirmed",
+    "run_backend_junior": "node backend_junior",
+    "install_frontend_junior": "(cd frontend_junior && npx create-react-app recrutement)",
+    "install_frontend_senior": "(cd frontend_senior && npx create-react-app recrutement)"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "jsonbox-node": "^1.0.7",
+    "node-fetch": "^2.6.1"
+  }
+}
