@@ -9,12 +9,10 @@ To do so we will use the following [API](https://punkapi.com/documentation/v2)
 - You make use of __React__ or __ReactNative__. State management technology is up to you: Redux, xState (Extra point if you dare to dive into this one), Context ...
 - For styling you can choose what you want 🎨
 - There are 3 pages (__beer list__, __beer detail__, __beer cart__)
-- When the page is reloaded, the cart remains filled
 
 Beer list page:
-- Display __all the beers paginated__ with an image, name, volume (you can paginate or use infinite loading)
+- Display __all the beers paginated__ with an image, name, volume
 - It's possible to __order__ or __remove__ a beer from the cart
-- It's possible to __search__ for a beer
 - We can see if a beer has been __ordered or not__
 - We can navigate to the __beer detail__ and __beer cart__ pages
 
@@ -29,6 +27,9 @@ Beer cart page:
 
 ## Bonus feature
 
+- Use a navigation dependency
+- When the page is reloaded, the cart remains filled
+- It's possible to __search__ for a beer
 - Responsive design (animations)
 - Implement __tests__ (you can choose your stack: Storybook, Jest, Cypress, QAWolf, ...)
 - Add __linters__
