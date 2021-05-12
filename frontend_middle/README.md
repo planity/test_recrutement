@@ -30,5 +30,5 @@ Beer cart page:
 ## Bonus feature
 
 - Responsive design (animations)
-- Implement __tests__ (you can choose your stack: Stoybook, Jest, Cypress, QAWolf, ...)
+- Implement __tests__ (you can choose your stack: Storybook, Jest, Cypress, QAWolf, ...)
 - Add __linters__
