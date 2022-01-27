@@ -13,7 +13,7 @@ The problem consists in writing a Node.js program which must:
 
 To simulate low memory constraints, your program should work with `node --max_old_space_size=50`
 
-The use of external libraries is not allowed
+The use of external libraries that would do the all job for you is obviously not allowed
 
 ## Example
 
