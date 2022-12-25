@@ -24,6 +24,7 @@ function BeerCard(props) {
         alt="green iguana"
         height="auto"
         image={props.image && props.image.length ? props.image : Imagedefault}
+        sx={{ maxHeight: '300px', maxWidth: '300px', margin: 'auto' }}
       />
       <CardContent>
         {props.name && props.name.length ? (

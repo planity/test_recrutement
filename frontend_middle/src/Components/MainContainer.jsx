@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, CircularProgress } from '@mui/material';
 import BeerAppBar from './BeerAppBar';
 import BeerCard from './BeerCard';
 import ShoppingCarts from './ShoppingCarts';
@@ -36,12 +36,10 @@ function MainContainer() {
           sx={{ marginTop: 3 }}
           key={beer.id}
         >
-          <BeerCard name={beer.name} id={1} volume={beer.volume} />
+          <BeerCard name={beer.name} id={1} volume={beer.volume} image={beer.image_url} />
         </Grid>
       ))}
-      <Grid item xs={12} md={6} lg={3} sx={{ marginTop: 3 }}>
-        <BeerCard name="Hello" id={1} volume="Il y a rien" />
-      </Grid>
+      {beers.loading && (<CircularProgress />)}
     </Grid>
   );
   /*
