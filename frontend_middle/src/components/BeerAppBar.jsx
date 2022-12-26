@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import {
-  AppBar, Box, Toolbar,
-  IconButton, Typography, InputBase,
-  Badge, MenuItem, Menu,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Badge,
+  MenuItem,
+  Menu,
 } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { useDispatch } from 'react-redux'
-import allActions from '../actions'
+import { useDispatch } from 'react-redux';
+import allActions from '../actions';
 /* 
   Search Style
 */
@@ -60,13 +66,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function BeerAppBar() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -124,17 +129,21 @@ export default function BeerAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={() => {
-        dispatch(allActions.navigationAction.openHomePage())
-      }}>
+      <MenuItem
+        onClick={() => {
+          dispatch(allActions.navigationAction.openHomePage());
+        }}
+      >
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <HomeIcon />
         </IconButton>
         <p>Home</p>
       </MenuItem>
-      <MenuItem onClick={() => {
-        dispatch(allActions.navigationAction.openOrderPage())
-      }}>
+      <MenuItem
+        onClick={() => {
+          dispatch(allActions.navigationAction.openOrderPage());
+        }}
+      >
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -174,11 +183,14 @@ export default function BeerAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails"
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
               color="inherit"
               onClick={() => {
-                dispatch(allActions.navigationAction.openHomePage())
-              }}>
+                dispatch(allActions.navigationAction.openHomePage());
+              }}
+            >
               <HomeIcon />
             </IconButton>
             <IconButton
@@ -186,7 +198,7 @@ export default function BeerAppBar() {
               aria-label="show 0 new notifications"
               color="inherit"
               onClick={() => {
-                dispatch(allActions.navigationAction.openOrderPage())
+                dispatch(allActions.navigationAction.openOrderPage());
               }}
             >
               <Badge badgeContent={0} color="error">

@@ -21,6 +21,7 @@ function MainContainer() {
     if (willMount.current) {
       loadDataOnlyOnce();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   /*
     Render The Home Component
@@ -28,18 +29,16 @@ function MainContainer() {
   const renderHomeComponent = () => (
     <Grid container spacing={2} justifyContent="center" alignItems="center">
       {beers.beers.map((beer) => (
-        <Grid
-          item
-          xs={12}
-          md={6}
-          lg={3}
-          sx={{ marginTop: 3 }}
-          key={beer.id}
-        >
-          <BeerCard name={beer.name} id={1} volume={beer.volume} image={beer.image_url} />
+        <Grid item xs={12} md={6} lg={3} sx={{ marginTop: 3 }} key={beer.id}>
+          <BeerCard
+            name={beer.name}
+            id={beer.id}
+            volume={beer.volume}
+            image={beer.image_url}
+          />
         </Grid>
       ))}
-      {beers.loading && (<CircularProgress />)}
+      {beers.loading && <CircularProgress />}
     </Grid>
   );
   /*

@@ -4,27 +4,25 @@ import mTypes from '../types';
 
 const initialState = {
   loading: false,
-  beers: [],
+  beer: null,
   error: null,
-  page: 1,
-  perPage: 10,
 };
 
-const beers = (state = initialState, action) => {
+const beerDetails = (state = initialState, action) => {
   switch (action.type) {
-    case mTypes.GET_BEER_STARTED:
+    case mTypes.BEER_DETAILS_STARTED:
       return {
         ...state,
         loading: true,
       };
-    case mTypes.GET_BEER_SUCCESS:
+    case mTypes.BEER_DETAILS_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null,
-        beers: [...state.beers, ...action.payload],
+        beer: action.payload,
       };
-    case mTypes.GET_BEER_FAILURE:
+    case mTypes.BEER_DETAILS_FAILURE:
       return {
         ...state,
         loading: false,
@@ -35,4 +33,4 @@ const beers = (state = initialState, action) => {
   }
 };
 
-export default beers;
+export default beerDetails;

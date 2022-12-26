@@ -6,7 +6,7 @@ const initState = {
   pageName: 'Home',
   id: null,
 };
-const navigation = ( state = initState, action) => {
+const navigation = (state = initState, action) => {
   switch (action.type) {
     case mTypes.OPEN_HOME_PAGE:
       return initState;

@@ -9,7 +9,10 @@ import rootReducer from './reducers';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const composeEnhancers = compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk)),
+);
 
 root.render(
   <Provider store={store}>

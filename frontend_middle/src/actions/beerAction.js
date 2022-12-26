@@ -17,17 +17,19 @@ const getBeersFailure = (error) => ({
   },
 });
 
-const getBeer = ({ page = 1, perPage = 10 }) => (dispatch) => {
-  dispatch(getBeersStarted());
-  axios
-    .get(`https://api.punkapi.com/v2/beers?page=${page}&per_page=${perPage}`)
-    .then((res) => {
-      dispatch(getBeersSuccess(res.data));
-    })
-    .catch((err) => {
-      dispatch(getBeersFailure(err.message));
-    });
-};
+const getBeer =
+  ({ page = 1, perPage = 10 }) =>
+  (dispatch) => {
+    dispatch(getBeersStarted());
+    axios
+      .get(`https://api.punkapi.com/v2/beers?page=${page}&per_page=${perPage}`)
+      .then((res) => {
+        dispatch(getBeersSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(getBeersFailure(err.message));
+      });
+  };
 
 export default {
   getBeer,

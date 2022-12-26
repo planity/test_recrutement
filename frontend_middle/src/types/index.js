@@ -1,7 +1,10 @@
 import navigationTypes from './navigationTypes';
+import beerDetailTypes from './beerDetailsTypes';
 import beerTypes from './beerTypes';
 
-export default {
+const allTypes = {
   ...navigationTypes,
   ...beerTypes,
+  ...beerDetailTypes,
 };
+export default allTypes;

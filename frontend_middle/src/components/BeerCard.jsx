@@ -57,7 +57,7 @@ function BeerCard(props) {
         <Button
           size="small"
           onClick={() => {
-            dispatch(allActions.navigationAction.openDetailsPage(props.idKey));
+            dispatch(allActions.navigationAction.openDetailsPage(props.id));
           }}
         >
           Details
@@ -67,7 +67,7 @@ function BeerCard(props) {
   );
 }
 BeerCard.prototype = {
-  idKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   image: PropTypes.string,
   name: PropTypes.string,
   volume: PropTypes.shape({

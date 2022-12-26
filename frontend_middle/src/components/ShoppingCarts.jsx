@@ -9,12 +9,14 @@ import Typography from '@mui/material/Typography';
 
 export default function ShoppingCarts() {
   return (
-    <List sx={{
-      width: '100%',
-      marginTop: "50px",
-      padding: "0 16px 0 16px",
-      bgcolor: 'background.paper'
-    }}>
+    <List
+      sx={{
+        width: '100%',
+        marginTop: '50px',
+        padding: '0 16px 0 16px',
+        bgcolor: 'background.paper',
+      }}
+    >
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -22,7 +24,7 @@ export default function ShoppingCarts() {
         <ListItemText
           primary="Brunch this weekend?"
           secondary={
-            <React.Fragment>
+            <>
               <Typography
                 sx={{ display: 'inline' }}
                 component="span"
@@ -32,7 +34,7 @@ export default function ShoppingCarts() {
                 Ali Connors
               </Typography>
               {" — I'll be in your neighborhood doing errands this…"}
-            </React.Fragment>
+            </>
           }
         />
       </ListItem>
@@ -44,7 +46,7 @@ export default function ShoppingCarts() {
         <ListItemText
           primary="Summer BBQ"
           secondary={
-            <React.Fragment>
+            <>
               <Typography
                 sx={{ display: 'inline' }}
                 component="span"
@@ -54,7 +56,7 @@ export default function ShoppingCarts() {
                 to Scott, Alex, Jennifer
               </Typography>
               {" — Wish I could come, but I'm out of town this…"}
-            </React.Fragment>
+            </>
           }
         />
       </ListItem>
@@ -66,7 +68,7 @@ export default function ShoppingCarts() {
         <ListItemText
           primary="Oui Oui"
           secondary={
-            <React.Fragment>
+            <>
               <Typography
                 sx={{ display: 'inline' }}
                 component="span"
@@ -76,7 +78,7 @@ export default function ShoppingCarts() {
                 Sandra Adams
               </Typography>
               {' — Do you have Paris recommendations? Have you ever…'}
-            </React.Fragment>
+            </>
           }
         />
       </ListItem>
