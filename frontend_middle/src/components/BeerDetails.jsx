@@ -45,9 +45,7 @@ function BeerDetails(props) {
       </Typography>
 
       {beerDetails.beer.ingredients.yeast.length ? (
-        <Typography variant="body2">
-          {beerDetails.beer.ingredients.yeast}
-        </Typography>
+        <Typography variant="body2">{beerDetails.beer.ingredients.yeast}</Typography>
       ) : (
         <Skeleton variant="rectangular" height={30} sx={{ marginTop: '4px' }} />
       )}

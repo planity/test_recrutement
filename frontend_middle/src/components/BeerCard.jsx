@@ -2,15 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Card,
-  Skeleton,
-  Typography,
-} from '@mui/material';
+import { Button, CardMedia, CardContent, CardActions, Card, Skeleton, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import allActions from '../actions';
 import Imagedefault from '../images/default.png';
@@ -35,22 +27,14 @@ function BeerCard(props) {
             {props.name}
           </Typography>
         ) : (
-          <Skeleton
-            variant="rectangular"
-            height={30}
-            sx={{ marginTop: '4px' }}
-          />
+          <Skeleton variant="rectangular" height={30} sx={{ marginTop: '4px' }} />
         )}
         {props.volume ? (
           <Typography variant="body2" color="text.secondary">
             {`${props.volume.value} ${props.volume.unit}`}
           </Typography>
         ) : (
-          <Skeleton
-            variant="rectangular"
-            height={60}
-            sx={{ marginTop: '4px' }}
-          />
+          <Skeleton variant="rectangular" height={60} sx={{ marginTop: '4px' }} />
         )}
         {props.children}
       </CardContent>
