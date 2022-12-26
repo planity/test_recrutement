@@ -1,9 +1,10 @@
 import axios from 'axios';
 import mTypes from '../types';
 
-const getBeersSuccess = (beer) => ({
+const getBeersSuccess = (beer, page) => ({
   type: mTypes.GET_BEER_SUCCESS,
   payload: beer,
+  page,
 });
 
 const getBeersStarted = () => ({
@@ -18,13 +19,13 @@ const getBeersFailure = (error) => ({
 });
 
 const getBeer =
-  ({ page = 1, perPage = 24 }) =>
+  (page = 1, perPage = 24) =>
   (dispatch) => {
     dispatch(getBeersStarted());
     axios
       .get(`https://api.punkapi.com/v2/beers?page=${page}&per_page=${perPage}`)
       .then((res) => {
-        dispatch(getBeersSuccess(res.data));
+        dispatch(getBeersSuccess(res.data, page));
       })
       .catch((err) => {
         dispatch(getBeersFailure(err.message));

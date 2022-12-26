@@ -8,14 +8,15 @@ import BeerCard from './BeerCard';
 import ShoppingCarts from './ShoppingCarts';
 import BeerDetails from './BeerDetails';
 import allActions from '../actions';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 function MainContainer() {
   const navigation = useSelector((state) => state.navigation);
-  const { beers } = useSelector((state) => state.beers);
+  const { beers, page } = useSelector((state) => state.beers);
   const willMount = React.useRef(true);
   const dispatch = useDispatch();
   const loadDataOnlyOnce = () => {
-    dispatch(allActions.beerAction.getBeer(1, 10));
+    dispatch(allActions.beerAction.getBeer(1, 24));
   };
   React.useEffect(() => {
     if (willMount.current && beers.length === 0) {
@@ -27,19 +28,30 @@ function MainContainer() {
     Render The Home Component
   */
   const renderHomeComponent = () => (
-    <Grid container spacing={2} justifyContent="center" alignItems="center">
-      {beers.map((beer) => (
-        <Grid item xs={12} md={6} lg={3} sx={{ marginTop: 3 }} key={beer.id}>
-          <BeerCard
-            name={beer.name}
-            id={beer.id}
-            volume={beer.volume}
-            image={beer.image_url}
-          />
-        </Grid>
-      ))}
-      {beers.loading && <CircularProgress />}
-    </Grid>
+    <InfiniteScroll
+      dataLength={beers.length}
+      pageStart={1}
+      next={() => {
+        dispatch(allActions.beerAction.getBeer(page + 1, 24));
+      }}
+      hasMore={true}
+      useWindow={true}
+      threshold={450}
+      loader={
+        <div className="loader" key={0}>
+          Loading ...
+        </div>
+      }
+    >
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        {beers.map((beer) => (
+          <Grid item xs={12} md={6} lg={3} sx={{ marginTop: 3 }} key={beer.id}>
+            <BeerCard name={beer.name} id={beer.id} volume={beer.volume} image={beer.image_url} />
+          </Grid>
+        ))}
+        {beers.loading && <CircularProgress />}
+      </Grid>
+    </InfiniteScroll>
   );
   /*
     Render the Shopping Cart

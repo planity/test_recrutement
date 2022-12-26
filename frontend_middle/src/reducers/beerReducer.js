@@ -22,6 +22,7 @@ const beers = (state = initialState, action) => {
         ...state,
         loading: false,
         error: null,
+        page: action.page,
         beers: [...state.beers, ...action.payload],
       };
     case mTypes.GET_BEER_FAILURE:
