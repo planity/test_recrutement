@@ -5,9 +5,24 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
+import { useDispatch, useSelector } from 'react-redux';
+import allActions from '../actions';
+import { IconButton } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function ShoppingCarts() {
+  const willMount = React.useRef(true);
+  const { beers } = useSelector((state) => state.beerOrder);
+  const dispatch = useDispatch();
+  const loadDataOnlyOnce = () => {
+    dispatch(allActions.beerAction.getBeer(1, 10));
+  };
+  React.useEffect(() => {
+    if (willMount.current && beers.length === 0) {
+      loadDataOnlyOnce();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <List
       sx={{
@@ -17,71 +32,33 @@ export default function ShoppingCarts() {
         bgcolor: 'background.paper',
       }}
     >
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Brunch this weekend?"
-          secondary={
-            <>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                Ali Connors
-              </Typography>
-              {" — I'll be in your neighborhood doing errands this…"}
-            </>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Summer BBQ"
-          secondary={
-            <>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                to Scott, Alex, Jennifer
-              </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
-            </>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Oui Oui"
-          secondary={
-            <>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                Sandra Adams
-              </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
-            </>
-          }
-        />
-      </ListItem>
+      {beers.map((beer) => {
+        return (
+          <React.Fragment key={beer.id}>
+            <ListItem
+              alignItems="flex-start"
+              secondaryAction={
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  onClick={() => {
+                    const id = beer.id;
+                    dispatch(allActions.navigationAction.openDetailsPage(id));
+                  }}
+                >
+                  <VisibilityIcon />
+                </IconButton>
+              }
+            >
+              <ListItemAvatar>
+                <Avatar alt="Remy Sharp" src={beer.image} />
+              </ListItemAvatar>
+              <ListItemText primary={beer.name} />
+            </ListItem>
+            <Divider variant="inset" component="li" />
+          </React.Fragment>
+        );
+      })}
     </List>
   );
 }

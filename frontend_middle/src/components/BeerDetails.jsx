@@ -21,14 +21,14 @@ function BeerDetails(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   /*
-            Main Component Render
-        */
+    Main Component Render
+  */
   return beerDetails.beer && !beerDetails.loading ? (
     <BeerCard
       id={beerDetails.beer.id}
       name={beerDetails.beer.name}
       volume={beerDetails.beer.volume}
-      image={beerDetails.beer.image}
+      image={beerDetails.beer.image_url}
     >
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         Description

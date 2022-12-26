@@ -7,7 +7,7 @@ const initialState = {
   beers: [],
   error: null,
   page: 1,
-  perPage: 10,
+  perPage: 24,
 };
 
 const beers = (state = initialState, action) => {

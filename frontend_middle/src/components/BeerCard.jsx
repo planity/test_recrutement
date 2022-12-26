@@ -11,12 +11,15 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import allActions from '../actions';
 import Imagedefault from '../images/default.png';
 
 function BeerCard(props) {
   const dispatch = useDispatch();
+  const { beers } = useSelector((state) => state.beerOrder);
+  let beerIds = [];
+  beerIds = beers.map(({ id }) => id);
   return (
     <Card>
       <CardMedia
@@ -53,7 +56,24 @@ function BeerCard(props) {
       </CardContent>
       <CardActions>
         {/* TODO We Have to check the list of orders */}
-        <Button size="small">Add</Button>
+        {beerIds.includes(props.id) ? (
+          <Button size="small">Orderd</Button>
+        ) : (
+          <Button
+            size="small"
+            onClick={() => {
+              const beer = {
+                id: props.id,
+                image: props.image,
+                name: props.name,
+              };
+              dispatch(allActions.beerOrderAction.addBeerToOrder(beer));
+            }}
+          >
+            Add
+          </Button>
+        )}
+
         <Button
           size="small"
           onClick={() => {

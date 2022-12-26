@@ -11,14 +11,14 @@ import allActions from '../actions';
 
 function MainContainer() {
   const navigation = useSelector((state) => state.navigation);
-  const beers = useSelector((state) => state.beers);
+  const { beers } = useSelector((state) => state.beers);
   const willMount = React.useRef(true);
   const dispatch = useDispatch();
   const loadDataOnlyOnce = () => {
     dispatch(allActions.beerAction.getBeer(1, 10));
   };
   React.useEffect(() => {
-    if (willMount.current) {
+    if (willMount.current && beers.length === 0) {
       loadDataOnlyOnce();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,7 +28,7 @@ function MainContainer() {
   */
   const renderHomeComponent = () => (
     <Grid container spacing={2} justifyContent="center" alignItems="center">
-      {beers.beers.map((beer) => (
+      {beers.map((beer) => (
         <Grid item xs={12} md={6} lg={3} sx={{ marginTop: 3 }} key={beer.id}>
           <BeerCard
             name={beer.name}

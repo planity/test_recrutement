@@ -18,7 +18,7 @@ const getBeersFailure = (error) => ({
 });
 
 const getBeer =
-  ({ page = 1, perPage = 10 }) =>
+  ({ page = 1, perPage = 24 }) =>
   (dispatch) => {
     dispatch(getBeersStarted());
     axios
