@@ -34,6 +34,7 @@ Good practices, code clarity, and organization.
 Clear and concise documentation.
 Proper error handling, code scalability...
 Any additional content/remarks will be appreciated.
+Your backend must handle concurrent calls.
 
 ## Dependancies
 
