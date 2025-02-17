@@ -29,12 +29,12 @@ Make sure to provide the complete source code along with the necessary documenta
 
 ## Evaluation Criteria
 
-Complete and correct functionality.
-Good practices, code clarity, and organization.
-Clear and concise documentation.
-Proper error handling, code scalability...
-Any additional content/remarks will be appreciated.
-Your backend must handle concurrent calls.
+- Complete and correct functionality.
+- Good practices, code clarity, and organization.
+- Clear and concise documentation.
+- Proper error handling, code scalability...
+- Any additional content/remarks will be appreciated.
+- Your backend must handle concurrent calls.
 
 ## Dependancies
 
